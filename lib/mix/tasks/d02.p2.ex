@@ -12,5 +12,9 @@ defmodule Mix.Tasks.D02.P2 do
     input
     |> part2()
     |> IO.inspect(label: "Part 2 Results")
+
+    Benchee.run(%{
+      "benchmark" => fn -> part2(input) end
+    })
   end
 end

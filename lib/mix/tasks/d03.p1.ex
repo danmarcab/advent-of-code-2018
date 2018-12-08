@@ -5,10 +5,16 @@ defmodule Mix.Tasks.D03.P1 do
 
   @shortdoc "Day 03 Part 1"
   def run(_) do
-    input = nil
+    input =
+      File.stream!("priv/data/d03.txt")
+      |> Stream.map(&String.trim/1)
 
     input
     |> part1()
-    |> IO.inspect(label: "Part 1 Results") 
+    |> IO.inspect(label: "Part 1 Results")
+
+    Benchee.run(%{
+      "benchmark" => fn -> part1(input) end
+    })
   end
-end   
+end

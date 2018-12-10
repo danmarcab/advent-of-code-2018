@@ -5,10 +5,11 @@ defmodule Mix.Tasks.D09.P2 do
 
   @shortdoc "Day 09 Part 2"
   def run(_) do
-    input = nil
+    part1(424, 7_114_400)
+    |> IO.inspect(label: "Part 2 Results")
 
-    input
-    |> part2() 
-    |> IO.inspect(label: "Part 2 Results") 
+    Benchee.run(%{
+      "benchmark" => fn -> part1(424, 7_114_400) end
+    })
   end
-end   
+end
